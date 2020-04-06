@@ -4,13 +4,13 @@ pr: none
 variables:
 - template: ../common/cd-vars-template.yml
   parameters:
-      projectName: parrot
+      projectName: webfrontend
   # define 3 more variables: registryName, registryLogin and registryPassword in the Azure pipeline UI definition
 
 resources: 
   pipelines:
   - pipeline: ci-pipeline
-    source: parrot-ci
+    source: webfrontend-ci
     trigger:
       enabled: true
       branches:
