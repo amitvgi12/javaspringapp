@@ -6,22 +6,22 @@ metadata:
     app: {{ template "webfrontend.name" . }}
     chart: {{ template "webfrontend.chart" . }}
     draft: {{ default "draft-app" .Values.draft }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ template "webfrontend.name" . }}
-      release: {{ .Release.Name }}
+      release: "{{ .Release.Name }}"
   template:
     metadata:
       labels:
         app: {{ template "webfrontend.name" . }}
         draft: {{ default "draft-app" .Values.draft }}
-        release: {{ .Release.Name }}
+        release: "{{ .Release.Name }}"
       annotations:
-        buildID: {{ .Values.buildID }}
+        buildID: "{{ .Values.buildID }}"
     spec:
       containers:
         - name: {{ .Chart.Name }}
