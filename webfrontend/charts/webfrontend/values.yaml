@@ -1,36 +1,36 @@
 # Default values for webfrontend.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-fullnameOverride: webfrontend
-replicaCount: 1
-image:
-  repository: webfrontend
-  tag: stable
-  pullPolicy: IfNotPresent
-imagePullSecrets: []
+# fullnameOverride: webfrontend
+# replicaCount: 1
+# image:
+ # repository: webfrontend
+ #  tag: stable
+ #  pullPolicy: IfNotPresent
+# imagePullSecrets: []
   # Optionally specify an array of imagePullSecrets.
   # Secrets must be manually created in the namespace.
   # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
   #
   # This uses credentials from secret "myRegistryKeySecretName".
   # - name: myRegistryKeySecretName
-service:
-  type: ClusterIP
-  port: 80
+# service:
+ # type: ClusterIP
+ # port: 80
 
-ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: addon-http-application-routing
+# ingress:
+  # enabled: true
+  # annotations:
+  #  kubernetes.io/ingress.class: addon-http-application-routing
     # kubernetes.io/tls-acme: "true"
-  path: /
+  # path: /
   # hosts:
   #   - chart-example.local
-  tls: []
+  # tls: []
     # - secretName: chart-example-tls
     #   hosts:
     #     - chart-example.local
-secrets: {}
+# secrets: {}
   # Optionally specify a set of secret objects whose values
   # will be injected as environment variables by default.
   # You should add this section to a file like secrets.yaml
@@ -42,7 +42,7 @@ secrets: {}
   # as the environment variable mysecret_mypassword=password.
   # mysecret:
   #   mypassword: password
-resources: {}
+# resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -53,8 +53,19 @@ resources: {}
   # requests:
   #  cpu: 100m
   #  memory: 128Mi
-nodeSelector: {}
+# nodeSelector: {}
 
-tolerations: []
+# tolerations: []
 
-affinity: {}
+# affinity: {}
+
+replicaCount: 1
+image:
+  useImagePullSecrets: false
+  pullPolicy: Always
+service:
+  internalPort: 3000
+  externalPort: 80
+ingress:
+  enabled: false
+  #basedomain: CHANGE_TO_YOUR_DNS.REGION.aksapp.io # replace with your own from the portal
