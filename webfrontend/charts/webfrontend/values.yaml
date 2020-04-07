@@ -64,10 +64,10 @@ image:
   useImagePullSecrets: false
   pullPolicy: Always
 service:
-  # internalPort: 3000
-  # externalPort: 80
-  type: ClusterIP
-  port: 80
+  internalPort: 3000
+  externalPort: 80
+  # type: ClusterIP
+  # port: 80
 ingress:
   enabled: false
-  #basedomain: CHANGE_TO_YOUR_DNS.REGION.aksapp.io # replace with your own from the portal
+  basedomain: ba8ee8c1e15d4de6a92d.eastus2.aksapp.io # replace with your own from the portal
