@@ -8,17 +8,10 @@ metadata:
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
 spec:
-  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
+  - port: {{ .Values.service.externalPort }}
+    protocol: TCP
+    targetPort: {{ .Values.service.internalPort }}
   selector:
     app: {{ template "fullname" . }}
-    release: "{{ .Release.Name }}"
-{{ if .Values.ingress.enabled }}
   type: ClusterIP
-{{ else }}
-  type: LoadBalancer
-{{ end }}
